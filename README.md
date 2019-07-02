@@ -3,14 +3,14 @@
 matplotlib style file created to mimic Kaleidagraph line/scatter plots.
 
 
-## Sample Kaleidagraph plot
+## Sample Kaleidagraph Plot
 
-<img src="https://github.com/bskinn/mpl-kaleidagraph/raw/master/images/kal.png" alt="Sample Kaleidagraph plot" width="500px">
+<img src="https://github.com/bskinn/mpl-kaleidagraph/raw/master/images/kal.png" alt="Sample Kaleidagraph Plot" width="500px">
 
 
 ## matplotlib Replica
 
-*(artificial datasets constructed to resemble the original)*
+*(artificial datasets constructed to resemble the originals)*
 
 <img src="https://github.com/bskinn/mpl-kaleidagraph/raw/master/images/mpl.png" alt="matplotlib Replica" width="500px">
 
