@@ -1,0 +1,74 @@
+#! /bin/bash
+
+timestamp="$( date '+%Y.%m.%d.%H%M' )"
+verpath='.verpath'
+
+if [[ -f "$verpath" && -r "$verpath" ]]
+then
+  # Do nothing, want it to exist
+  true
+else
+  # Complain and exit
+  echo "ERROR: Path to files with versions to update must be provided in {repo root}/.verpath"
+  echo " "
+  exit 1
+fi
+
+# $verpath must contain the paths to the files to be updated with
+# the timestamped version, one per line
+while read -r verfile
+do
+  # Cosmetic
+  echo ""
+
+  if [[ -e "$verfile" ]]
+  then
+    # File to be updated with version exists; update and add to commit.
+    # Tempfile with old file stored in case of commit cancellation.
+    echo "Updating $verfile"
+    cp -a -- "$verfile" "$verfile.bak"
+    sed -i "s/^__version__ = .*$/__version__ = '$timestamp'/" "$verfile"
+    git add "$verfile"
+
+  else
+    echo "$verfile not found!"
+
+  fi
+
+done < "$verpath"
+
+# Cosmetic
+echo ""
+
+# So user can see what was updated
+sleep 2s
+
+# Actually do the commit, passing through any parameters
+#git commit "$@"
+
+# If the commit succeeds, tag HEAD with $timestamp and delete temp file(s).
+# If the commit fails, restore the prior state of the $verfile's.
+if git commit "$@"
+then
+  git tag -f "$timestamp"
+
+  while read -r verfile
+  do
+    rm -f -- "$verfile.bak"
+  done < "$verpath"
+
+else
+  while read -r verfile
+  do
+    if [[ -e "$verfile.bak" ]]
+    then
+      git reset HEAD "$verfile" > /dev/null 2>&1
+      rm -f -- "$verfile"
+      mv -- "$verfile.bak" "$verfile"
+    fi
+  done < "$verpath"
+
+fi
+
+
+
