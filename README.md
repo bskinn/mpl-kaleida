@@ -28,6 +28,9 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
 
 
+plt.style.use(str(Path('C:\\') / ... / 'kaleida.mplstyle'))
+
+
 xdata1 = np.arange(0, 193, 7)
 ydata1 = 250 * np.exp(-0.15 * (xdata1 / 60))
 ydata1_noisy = np.array([(0.99 + 0.02 * random()) * _ for _ in ydata1])

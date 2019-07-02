@@ -7,15 +7,15 @@ figure.figsize			: 8.5, 7.0
 font.family			: sans-serif
 font.sans-serif			: Arial, Liberation Sans, DejaVu Sans, Bitstream Vera Sans, sans-serif
 #font.sans-serif			: Tahoma, Arial Rounded MT Bold, Arial, Liberation Sans, DejaVu Sans, Bitstream Vera Sans, sans-serif
-font.size				: 18
+font.size				: 20
 #font.weight			: 300
 
 
 axes.prop_cycle			: cycler('color', ['00'])
 axes.linewidth			: 1.5
-axes.titlesize			: xx-large
+axes.titlesize			: x-large
 axes.titlepad			: 16
-axes.labelsize			: x-large
+axes.labelsize			: large
 axes.labelpad			: 12
 
 
