@@ -1,2 +1,4 @@
-# mpl-kaleida
-matplotlib style file to mimic Kaleidagraph line/scatter plots
+# mpl-kaleidagraph
+matplotlib style file created to mimic Kaleidagraph line/scatter plots.
+
+
